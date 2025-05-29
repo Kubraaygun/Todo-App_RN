@@ -84,13 +84,6 @@ export default function Index() {
               <Checkbox value={item.isDone} />
               <Text>{item.title}</Text>
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                alert("Deleted " + item.id);
-              }}
-            >
-              <Ionicons name="trash" size={24} color={"red"} />
-            </TouchableOpacity>
           </View>
         )}
       />
@@ -125,16 +118,11 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   todoContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
     backgroundColor: "#fff",
     padding: 16,
     borderRadius: 10,
-    marginBottom: 20,
   },
   todoInfoContainer: {
     flexDirection: "row",
-    gap: 10,
-    alignItems: "center",
   },
 });

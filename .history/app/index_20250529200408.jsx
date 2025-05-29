@@ -84,11 +84,7 @@ export default function Index() {
               <Checkbox value={item.isDone} />
               <Text>{item.title}</Text>
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                alert("Deleted " + item.id);
-              }}
-            >
+            <TouchableOpacity>
               <Ionicons name="trash" size={24} color={"red"} />
             </TouchableOpacity>
           </View>

@@ -86,7 +86,7 @@ export default function Index() {
             </View>
             <TouchableOpacity
               onPress={() => {
-                alert("Deleted " + item.id);
+                alert("Deleted");
               }}
             >
               <Ionicons name="trash" size={24} color={"red"} />
