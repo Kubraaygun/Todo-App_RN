@@ -4,7 +4,6 @@ import {
   Image,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -65,11 +64,6 @@ export default function Index() {
 
       <View style={styles.searchBar}>
         <Ionicons name="search" size={24} color={"#333"} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          clearButtonMode="always"
-        />
       </View>
       {/* data=Listelenecek verileri iceren dizi */}
       {/* keyExtractor=Her item için benzersiz bir key belirler.  */}
@@ -100,17 +94,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   searchBar: {
-    flexDirection: "row",
     backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 10,
-    gap: 10,
-    marginBottom: 20,
-  },
-  searchInput: {
-    // backgroundColor: "blue",
-    flex: 1,
-    fontSize: 16,
-    color: "#333",
   },
 });

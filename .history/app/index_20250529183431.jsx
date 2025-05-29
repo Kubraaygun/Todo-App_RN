@@ -1,13 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 const todoData = [
   {
@@ -46,29 +38,12 @@ export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => {
-            alert("Clicked!");
+        <Ionicons name="menu" size={24} color={"#333"} />
+        <Image
+          source={{
+            uri: "https://cdn.pixabay.com/photo/2024/01/05/17/46/ai-generated-8489902_960_720.png",
           }}
-        >
-          <Ionicons name="menu" size={24} color={"#333"} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            source={{
-              uri: "https://cdn.pixabay.com/photo/2024/01/05/17/46/ai-generated-8489902_960_720.png",
-            }}
-            style={{ height: 40, width: 40, borderRadius: 20 }}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={24} color={"#333"} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          clearButtonMode="always"
+          style={{ height: 40, width: 40, borderRadius: 20 }}
         />
       </View>
       {/* data=Listelenecek verileri iceren dizi */}
@@ -95,22 +70,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
     marginBottom: 20,
-  },
-  searchBar: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    padding: 16,
-    borderRadius: 10,
-    gap: 10,
-    marginBottom: 20,
-  },
-  searchInput: {
-    // backgroundColor: "blue",
-    flex: 1,
-    fontSize: 16,
-    color: "#333",
   },
 });
