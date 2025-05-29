@@ -1,16 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
+import Checkbox from "expo-checkbox";
 import {
   FlatList,
   Image,
   KeyboardAvoidingView,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ToDoItem from "./toDoItem";
-
 const todoData = [
   {
     id: 1,
@@ -79,7 +79,9 @@ export default function Index() {
       <FlatList
         data={todoData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ToDoItem item={item} />}
+        renderItem={({ item }) => (
+          
+        }
       />
 
       {/* <View style={styles.footer}> */}
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   addButton: {
-    backgroundColor: "plum",
+    backgroundColor: "purple",
     padding: 8,
     borderRadius: 10,
     marginLeft: 20,

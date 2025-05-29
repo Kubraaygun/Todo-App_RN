@@ -79,7 +79,7 @@ export default function Index() {
       <FlatList
         data={todoData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ToDoItem item={item} />}
+        renderItem={({ item }) => <ToDoItem />}
       />
 
       {/* <View style={styles.footer}> */}

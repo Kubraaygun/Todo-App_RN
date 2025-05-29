@@ -1,16 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
+import Checkbox from "expo-checkbox";
 import {
   FlatList,
   Image,
-  KeyboardAvoidingView,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ToDoItem from "./toDoItem";
-
 const todoData = [
   {
     id: 1,
@@ -79,21 +78,22 @@ export default function Index() {
       <FlatList
         data={todoData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ToDoItem item={item} />}
+        renderItem={({ item }) => (
+          <View style={styles.todoContainer}>
+            <View style={styles.todoInfoContainer}>
+              <Checkbox value={item.isDone} />
+              <Text style={styles.todoText}>{item.title}</Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                alert("Deleted " + item.id);
+              }}
+            >
+              <Ionicons name="trash" size={24} color={"red"} />
+            </TouchableOpacity>
+          </View>
+        )}
       />
-
-      {/* <View style={styles.footer}> */}
-      <KeyboardAvoidingView
-        style={styles.footer}
-        behavior="padding"
-        keyboardVerticalOffset={10}
-      >
-        <TextInput placeholder="Add New Todo" style={styles.newTodoInput} />
-        <TouchableOpacity style={styles.addButton} onPress={() => {}}>
-          <Ionicons name="add" size={34} color={"#ffff"} />
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-      {/* </View> */}
     </SafeAreaView>
   );
 }
@@ -136,28 +136,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     alignItems: "center",
-  },
-  todoText: {
-    fontSize: 16,
-    color: "#333",
-  },
-  footer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  newTodoInput: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    fontSize: 16,
-    color: "#333",
-  },
-  addButton: {
-    backgroundColor: "plum",
-    padding: 8,
-    borderRadius: 10,
-    marginLeft: 20,
   },
 });

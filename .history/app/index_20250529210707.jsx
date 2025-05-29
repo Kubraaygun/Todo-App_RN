@@ -1,16 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
+import Checkbox from "expo-checkbox";
 import {
   FlatList,
   Image,
   KeyboardAvoidingView,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ToDoItem from "./toDoItem";
-
 const todoData = [
   {
     id: 1,
@@ -79,7 +79,28 @@ export default function Index() {
       <FlatList
         data={todoData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ToDoItem item={item} />}
+        renderItem={({ item }) => (
+          <View style={styles.todoContainer}>
+            <View style={styles.todoInfoContainer}>
+              <Checkbox value={item.isDone} color={"plum"} />
+              <Text
+                style={[
+                  styles.todoText,
+                  item.isDone && { textDecorationLine: "line-through" },
+                ]}
+              >
+                {item.title}
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                alert("Deleted " + item.id);
+              }}
+            >
+              <Ionicons name="trash" size={24} color={"red"} />
+            </TouchableOpacity>
+          </View>
+        )}
       />
 
       {/* <View style={styles.footer}> */}
