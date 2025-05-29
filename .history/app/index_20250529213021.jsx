@@ -1,5 +1,4 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
 import {
   FlatList,
   Image,
@@ -45,7 +44,6 @@ export default function Index() {
       isDone: false,
     },
   ];
-  const [todos, setTodos] = useState(todoData);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -79,7 +77,7 @@ export default function Index() {
       {/* renderItem=Her bir veriyi nasıl göstereceğini belirler. */}
 
       <FlatList
-        data={todos}
+        data={todoData}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <ToDoItem item={item} />}
       />
