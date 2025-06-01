@@ -96,7 +96,7 @@ export default function Index() {
           placeholder="Add New Todo"
           style={styles.newTodoInput}
           value={todoText}
-          onChangeText={(text) => setTodoText(text)}
+          onChange={(text) => setTodoText(text)}
         />
         <TouchableOpacity
           style={styles.addButton}

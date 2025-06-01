@@ -96,14 +96,9 @@ export default function Index() {
           placeholder="Add New Todo"
           style={styles.newTodoInput}
           value={todoText}
-          onChangeText={(text) => setTodoText(text)}
+          onChange={(text) => setTodoText(text)}
         />
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => {
-            alert(todoText);
-          }}
-        >
+        <TouchableOpacity style={styles.addButton} onPress={() => {}}>
           <Ionicons name="add" size={34} color={"#ffff"} />
         </TouchableOpacity>
       </KeyboardAvoidingView>

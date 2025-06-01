@@ -47,7 +47,6 @@ const todoData = [
 
 export default function Index() {
   const [todos, setTodos] = useState(todoData);
-  const [todoText, setTodoText] = useState();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -92,18 +91,8 @@ export default function Index() {
         behavior="padding"
         keyboardVerticalOffset={10}
       >
-        <TextInput
-          placeholder="Add New Todo"
-          style={styles.newTodoInput}
-          value={todoText}
-          onChangeText={(text) => setTodoText(text)}
-        />
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => {
-            alert(todoText);
-          }}
-        >
+        <TextInput placeholder="Add New Todo" style={styles.newTodoInput} />
+        <TouchableOpacity style={styles.addButton} onPress={() => {}}>
           <Ionicons name="add" size={34} color={"#ffff"} />
         </TouchableOpacity>
       </KeyboardAvoidingView>
