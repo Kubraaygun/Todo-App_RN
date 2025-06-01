@@ -85,7 +85,7 @@ export default function Index() {
       <FlatList
         data={todos}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
+        renderItem={({ item }) => <ToDoItem item={item} />}
       />
 
       {/* <View style={styles.footer}> */}

@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToDoItem from "./toDoItem";
+
 // Başlangıç todo verisi
 const todoData = [
   {
@@ -47,11 +48,13 @@ const todoData = [
 
 export default function Index() {
   // todo listesini state olarak tutuyoruz
+
   const [todos, setTodos] = useState(todoData);
   // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState();
   return (
     <SafeAreaView style={styles.container}>
+      {/* Üst kısım: menü ve profil resmi */}
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -69,7 +72,7 @@ export default function Index() {
           />
         </TouchableOpacity>
       </View>
-
+      {/* Arama çubuğu */}
       <View style={styles.searchBar}>
         <Ionicons name="search" size={24} color={"#333"} />
         <TextInput
@@ -81,13 +84,11 @@ export default function Index() {
       {/* data=Listelenecek verileri iceren dizi */}
       {/* keyExtractor=Her item için benzersiz bir key belirler.  */}
       {/* renderItem=Her bir veriyi nasıl göstereceğini belirler. */}
-
       <FlatList
         data={todos}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
         renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
       />
-
       {/* <View style={styles.footer}> */}
       <KeyboardAvoidingView
         style={styles.footer}

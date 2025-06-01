@@ -45,10 +45,8 @@ const todoData = [
   },
 ];
 
-export default function Index() {
-  // todo listesini state olarak tutuyoruz
+export default function Index() {todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState(todoData);
-  // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState();
   return (
     <SafeAreaView style={styles.container}>
@@ -84,8 +82,8 @@ export default function Index() {
 
       <FlatList
         data={todos}
-        keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ToDoItem item={item} />}
       />
 
       {/* <View style={styles.footer}> */}

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToDoItem from "./toDoItem";
-// Başlangıç todo verisi
+
 const todoData = [
   {
     id: 1,
@@ -46,9 +46,7 @@ const todoData = [
 ];
 
 export default function Index() {
-  // todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState(todoData);
-  // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState();
   return (
     <SafeAreaView style={styles.container}>
@@ -84,8 +82,8 @@ export default function Index() {
 
       <FlatList
         data={todos}
-        keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ToDoItem item={item} />}
       />
 
       {/* <View style={styles.footer}> */}
@@ -98,7 +96,7 @@ export default function Index() {
           placeholder="Add New Todo"
           style={styles.newTodoInput}
           value={todoText}
-          onChangeText={(text) => setTodoText(text)}
+          onChange={(text) => setTodoText(text)}
         />
         <TouchableOpacity
           style={styles.addButton}
