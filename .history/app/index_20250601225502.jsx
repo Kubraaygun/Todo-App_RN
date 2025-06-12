@@ -50,17 +50,6 @@ export default function Index() {
   const [todos, setTodos] = useState(todoData);
   // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState();
-
-  const addTodo = () => {
-    const newTodo = {
-      id: Math.random(),
-      title: todoText,
-      isDone: false,
-    };
-    todos.push(newTodo);
-    setTodos(todos);
-    setTodoText("");
-  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -109,12 +98,12 @@ export default function Index() {
           placeholder="Add New Todo"
           style={styles.newTodoInput}
           value={todoText}
-          onChangeText={(text) => setTodoText(text)} // Yazılan metni state'e kaydet
+          onChangeText={(text) => setTodoText(text)}// Yazılan metni state'e kaydet
         />
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            addTodo();
+            alert(todoText);
           }}
         >
           <Ionicons name="add" size={34} color={"#ffff"} />

@@ -114,7 +114,7 @@ export default function Index() {
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            addTodo();
+            alert(todoText);
           }}
         >
           <Ionicons name="add" size={34} color={"#ffff"} />
