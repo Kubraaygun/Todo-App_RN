@@ -85,7 +85,7 @@ export default function Index() {
 
   const deleteTodo = async (id) => {
     try {
-      const newTodos = todos.filter((item) => item.id !== id);
+      newTodos = todos.filter((item) => item.id !== id);
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
     } catch (error) {

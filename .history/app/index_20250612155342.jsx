@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   FlatList,
   Image,
@@ -51,21 +51,8 @@ export default function Index() {
   // todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState([]);
   // input alanına yazılan yeni todo metni için state
-  const [todoText, setTodoText] = useState("");
+  const [todoText, setTodoText] = useState();
 
-  useEffect(() => {
-    const getTodos = async () => {
-      try {
-        const todos = await AsyncStorage.getItem("my-todo");
-        if (todos !== null) {
-          setTodos(JSON.parse(todos));
-        }
-      } catch (error) {
-        console.log("Error fetching todos:", error);
-      }
-    };
-    getTodos();
-  }, []);
   const addTodo = async () => {
     try {
       const newTodo = {
@@ -77,19 +64,9 @@ export default function Index() {
       setTodos(todos);
       await AsyncStorage.setItem("my-todo", JSON.stringify(todos));
       setTodoText("");
-      Keyboard.dismiss(); // Klavyeyi kapat
+      Keyboard.dismiss; // Klavyeyi kapat
     } catch (error) {
       console.log("Error adding todo:", error);
-    }
-  };
-
-  const deleteTodo = async (id) => {
-    try {
-      const newTodos = todos.filter((item) => item.id !== id);
-      await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
-      setTodos(newTodos);
-    } catch (error) {
-      console.log("Error deleting todo:", error);
     }
   };
   return (
@@ -127,9 +104,7 @@ export default function Index() {
       <FlatList
         data={[...todos].reverse()}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => (
-          <ToDoItem item={item} deleteTodo={deleteTodo} />
-        )} // Her item nasıl görünecek
+        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
       />
 
       {/* <View style={styles.footer}> */}

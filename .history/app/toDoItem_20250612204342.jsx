@@ -21,7 +21,7 @@ const ToDoItem = ({ item, deleteTodo }) => {
       </View>
       <TouchableOpacity
         onPress={() => {
-          deleteTodo(item.id);
+          deleteTodo(item);
           alert("Deleted " + item.id);
         }}
       >

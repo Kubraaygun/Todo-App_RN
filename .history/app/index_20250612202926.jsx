@@ -77,19 +77,9 @@ export default function Index() {
       setTodos(todos);
       await AsyncStorage.setItem("my-todo", JSON.stringify(todos));
       setTodoText("");
-      Keyboard.dismiss(); // Klavyeyi kapat
+      Keyboard.dismiss; // Klavyeyi kapat
     } catch (error) {
       console.log("Error adding todo:", error);
-    }
-  };
-
-  const deleteTodo = async (id) => {
-    try {
-      const newTodos = todos.filter((item) => item.id !== id);
-      await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
-      setTodos(newTodos);
-    } catch (error) {
-      console.log("Error deleting todo:", error);
     }
   };
   return (
@@ -127,9 +117,7 @@ export default function Index() {
       <FlatList
         data={[...todos].reverse()}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => (
-          <ToDoItem item={item} deleteTodo={deleteTodo} />
-        )} // Her item nasıl görünecek
+        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
       />
 
       {/* <View style={styles.footer}> */}

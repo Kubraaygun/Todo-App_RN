@@ -13,45 +13,12 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToDoItem from "./toDoItem";
-// Başlangıç todo verisi
-const todoData = [
-  {
-    id: 1,
-    title: "Todo 1",
-    isDone: false,
-  },
-  {
-    id: 2,
-    title: "Todo 2",
-    isDone: false,
-  },
-  {
-    id: 3,
-    title: "Todo 3",
-    isDone: false,
-  },
-  {
-    id: 4,
-    title: "Todo 4",
-    isDone: true,
-  },
-  {
-    id: 5,
-    title: "Todo 5",
-    isDone: false,
-  },
-  {
-    id: 6,
-    title: "Todo 6",
-    isDone: false,
-  },
-];
 
 export default function Index() {
   // todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState([]);
   // input alanına yazılan yeni todo metni için state
-  const [todoText, setTodoText] = useState("");
+  const [todoText, setTodoText] = useState();
 
   useEffect(() => {
     const getTodos = async () => {
@@ -77,19 +44,9 @@ export default function Index() {
       setTodos(todos);
       await AsyncStorage.setItem("my-todo", JSON.stringify(todos));
       setTodoText("");
-      Keyboard.dismiss(); // Klavyeyi kapat
+      Keyboard.dismiss; // Klavyeyi kapat
     } catch (error) {
       console.log("Error adding todo:", error);
-    }
-  };
-
-  const deleteTodo = async (id) => {
-    try {
-      const newTodos = todos.filter((item) => item.id !== id);
-      await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
-      setTodos(newTodos);
-    } catch (error) {
-      console.log("Error deleting todo:", error);
     }
   };
   return (
@@ -127,9 +84,7 @@ export default function Index() {
       <FlatList
         data={[...todos].reverse()}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
-        renderItem={({ item }) => (
-          <ToDoItem item={item} deleteTodo={deleteTodo} />
-        )} // Her item nasıl görünecek
+        renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
       />
 
       {/* <View style={styles.footer}> */}
