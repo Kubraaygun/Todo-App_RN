@@ -94,7 +94,7 @@ export default function Index() {
       {/* renderItem=Her bir veriyi nasıl göstereceğini belirler. */}
 
       <FlatList
-        data={[...todos].reverse()}
+        data={todos.reverse()}
         keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key
         renderItem={({ item }) => <ToDoItem item={item} />} // Her item nasıl görünecek
       />
