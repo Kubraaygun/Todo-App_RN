@@ -6,7 +6,6 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
-  Platform,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -177,7 +176,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     backgroundColor: "#f5f5f5",
   },
   header: {
@@ -189,9 +188,7 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: "row",
     backgroundColor: "#fff",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: Platform.OS === "ios" ? 16 : 8,
+    padding: 16,
     borderRadius: 10,
     gap: 10,
     marginBottom: 20,

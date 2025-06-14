@@ -6,7 +6,6 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
-  Platform,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -189,9 +188,7 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: "row",
     backgroundColor: "#fff",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: Platform.OS === "ios" ? 16 : 8,
+    paddingH: 16,
     borderRadius: 10,
     gap: 10,
     marginBottom: 20,
