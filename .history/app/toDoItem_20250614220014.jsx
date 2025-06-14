@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 // ToDoItem bileşeni, her bir todo'yu temsil eder
-const ToDoItem = ({ item, deleteTodo, handleTodo }) => {
+const ToDoItem = ({ item, deleteTodo }) => {
   return (
     <View style={styles.todoContainer}>
       <View style={styles.todoInfoContainer}>

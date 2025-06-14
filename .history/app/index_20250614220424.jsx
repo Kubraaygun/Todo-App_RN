@@ -36,7 +36,6 @@ export default function Index() {
     getTodos();
   }, []);
 
-  // Yeni todo ekleme fonksiyonu
   const addTodo = async () => {
     try {
       const newTodo = {
@@ -53,7 +52,7 @@ export default function Index() {
       console.log("Error adding todo:", error);
     }
   };
-  // Todo silme fonksiyonu
+
   const deleteTodo = async (id) => {
     try {
       const newTodos = todos.filter((item) => item.id !== id);
@@ -63,7 +62,7 @@ export default function Index() {
       console.log("Error deleting todo:", error);
     }
   };
-  // Todo tamamlandı olarak işaretleme fonksiyonu
+
   const handleDone = async (id) => {
     try {
       const newTodos = todos.map((item) => {

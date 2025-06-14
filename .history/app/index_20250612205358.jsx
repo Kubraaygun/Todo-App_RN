@@ -13,14 +13,45 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToDoItem from "./toDoItem";
+// Başlangıç todo verisi
+const todoData = [
+  {
+    id: 1,
+    title: "Todo 1",
+    isDone: false,
+  },
+  {
+    id: 2,
+    title: "Todo 2",
+    isDone: false,
+  },
+  {
+    id: 3,
+    title: "Todo 3",
+    isDone: false,
+  },
+  {
+    id: 4,
+    title: "Todo 4",
+    isDone: true,
+  },
+  {
+    id: 5,
+    title: "Todo 5",
+    isDone: false,
+  },
+  {
+    id: 6,
+    title: "Todo 6",
+    isDone: false,
+  },
+];
 
 export default function Index() {
   // todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState([]);
   // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState("");
-  // arama çubuğu için state
-  const [seaarchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getTodos = async () => {
@@ -35,8 +66,6 @@ export default function Index() {
     };
     getTodos();
   }, []);
-
-  // Yeni todo ekleme fonksiyonu
   const addTodo = async () => {
     try {
       const newTodo = {
@@ -53,7 +82,7 @@ export default function Index() {
       console.log("Error adding todo:", error);
     }
   };
-  // Todo silme fonksiyonu
+
   const deleteTodo = async (id) => {
     try {
       const newTodos = todos.filter((item) => item.id !== id);
@@ -63,22 +92,6 @@ export default function Index() {
       console.log("Error deleting todo:", error);
     }
   };
-  // Todo tamamlandı olarak işaretleme fonksiyonu
-  const handleDone = async (id) => {
-    try {
-      const newTodos = todos.map((item) => {
-        if (item.id == id) {
-          item.isDone = !item.isDone; // isDone değerini tersine çevir
-        }
-        return item;
-      });
-      await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
-      setTodos(newTodos);
-    } catch (error) {
-      console.log("Error updating todo:", error);
-    }
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -113,15 +126,9 @@ export default function Index() {
 
       <FlatList
         data={[...todos].reverse()}
-        // Her item için benzersiz key
-        keyExtractor={(item) => item.id.toString()}
-        // // Her item nasıl görünecek
+        keyExtractor={(item) => item.id.toString()} // Her item için benzersiz key // Her item nasıl görünecek
         renderItem={({ item }) => (
-          <ToDoItem
-            item={item}
-            deleteTodo={deleteTodo}
-            handleTodo={handleDone}
-          />
+          <ToDoItem item={item} deleteTodo={deleteTodo} />
         )}
       />
 
@@ -192,7 +199,7 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   addButton: {
-    backgroundColor: "purple",
+    backgroundColor: "plum",
     padding: 8,
     borderRadius: 10,
     marginLeft: 20,

@@ -13,14 +13,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ToDoItem from "./toDoItem";
+// Başlangıç todo verisi
 
 export default function Index() {
   // todo listesini state olarak tutuyoruz
   const [todos, setTodos] = useState([]);
   // input alanına yazılan yeni todo metni için state
   const [todoText, setTodoText] = useState("");
-  // arama çubuğu için state
-  const [seaarchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getTodos = async () => {
@@ -36,7 +35,6 @@ export default function Index() {
     getTodos();
   }, []);
 
-  // Yeni todo ekleme fonksiyonu
   const addTodo = async () => {
     try {
       const newTodo = {
@@ -53,7 +51,7 @@ export default function Index() {
       console.log("Error adding todo:", error);
     }
   };
-  // Todo silme fonksiyonu
+
   const deleteTodo = async (id) => {
     try {
       const newTodos = todos.filter((item) => item.id !== id);
@@ -63,7 +61,7 @@ export default function Index() {
       console.log("Error deleting todo:", error);
     }
   };
-  // Todo tamamlandı olarak işaretleme fonksiyonu
+
   const handleDone = async (id) => {
     try {
       const newTodos = todos.map((item) => {
