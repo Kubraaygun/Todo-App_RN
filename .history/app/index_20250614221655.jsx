@@ -49,7 +49,6 @@ export default function Index() {
       };
       todos.push(newTodo);
       setTodos(todos);
-      setOldTodos(todos);
       await AsyncStorage.setItem("my-todo", JSON.stringify(todos));
       setTodoText("");
       Keyboard.dismiss(); // Klavyeyi kapat
@@ -63,7 +62,6 @@ export default function Index() {
       const newTodos = todos.filter((item) => item.id !== id);
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
-      setOldTodos(newTodos);
     } catch (error) {
       console.log("Error deleting todo:", error);
     }
@@ -79,7 +77,6 @@ export default function Index() {
       });
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
-      setOldTodos(newTodos);
     } catch (error) {
       console.log("Error updating todo:", error);
     }

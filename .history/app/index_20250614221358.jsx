@@ -21,7 +21,7 @@ export default function Index() {
   const [todoText, setTodoText] = useState("");
   // arama çubuğu için state
   const [seaarchQuery, setSearchQuery] = useState("");
-  // Eski todo'ları tutmak için state
+  // Eski todo'ları tutmak için state (isteğe bağlı)
   const [oldTodos, setOldTodos] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,6 @@ export default function Index() {
         const todos = await AsyncStorage.getItem("my-todo");
         if (todos !== null) {
           setTodos(JSON.parse(todos));
-          setOldTodos(JSON.parse(todos));
         }
       } catch (error) {
         console.log("Error fetching todos:", error);
@@ -49,7 +48,6 @@ export default function Index() {
       };
       todos.push(newTodo);
       setTodos(todos);
-      setOldTodos(todos);
       await AsyncStorage.setItem("my-todo", JSON.stringify(todos));
       setTodoText("");
       Keyboard.dismiss(); // Klavyeyi kapat
@@ -63,7 +61,6 @@ export default function Index() {
       const newTodos = todos.filter((item) => item.id !== id);
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
-      setOldTodos(newTodos);
     } catch (error) {
       console.log("Error deleting todo:", error);
     }
@@ -79,15 +76,13 @@ export default function Index() {
       });
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
-      setOldTodos(newTodos);
     } catch (error) {
       console.log("Error updating todo:", error);
     }
   };
   // Arama fonksiyonu
-  // Arama çubuğuna yazılan metne göre todo'ları filtreleme
   const onSearch = () => {
-    const filteredTodos = oldTodos.filter((item) =>
+    const filteredTodos = todos.filter((item) =>
       item.title.toLowerCase().includes(seaarchQuery.toLowerCase())
     );
     setTodos(filteredTodos);
@@ -97,7 +92,6 @@ export default function Index() {
     onSearch(seaarchQuery);
   }, [seaarchQuery]);
 
-  // Eski todo'ları geri yükleme fonksiyonu
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

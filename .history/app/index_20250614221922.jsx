@@ -79,7 +79,6 @@ export default function Index() {
       });
       await AsyncStorage.setItem("my-todo", JSON.stringify(newTodos));
       setTodos(newTodos);
-      setOldTodos(newTodos);
     } catch (error) {
       console.log("Error updating todo:", error);
     }
